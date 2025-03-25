@@ -64,7 +64,7 @@ def train_and_evaluate_monolingual(lang, data_pair, upstream_model, feature_extr
     running_loss = 0
     update_interval = 100
 
-    pbar = tqdm(total=num_iterations, desc=f"Training {lang} with QLoRA", unit="iter", dynamic_ncols=True)
+    pbar = tqdm(total=num_iterations, desc=f"Training {lang}", unit="iter", dynamic_ncols=True)
 
     model.train()
     while iteration < num_iterations:
