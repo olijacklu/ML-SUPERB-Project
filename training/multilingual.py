@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import torch.optim as optim
 from torch.utils.data import DataLoader
 import bitsandbytes as bnb
 import random
@@ -13,7 +14,7 @@ from models.utils import collate_fn
 from evaluation.metrics import calculate_cer
 
 
-def train_and_evaluate_multilingual(upstream_model, feature_extractor, datasets, task="asr", train_split="10min_train", device="cuda", lora_config=None):
+def train_and_evaluate_multilingual(upstream_model, feature_extractor, datasets, task="asr", train_split="10min_train", device="cuda", lora_config=None, quantize=False):
     torch.manual_seed(42)
     random.seed(42)
 
@@ -59,7 +60,7 @@ def train_and_evaluate_multilingual(upstream_model, feature_extractor, datasets,
 
     ctc_loss = nn.CTCLoss(blank=0, zero_infinity=True)
     ce_loss = nn.CrossEntropyLoss()
-    optimizer = bnb.optim.AdamW8bit(filter(lambda p: p.requires_grad, model.parameters()), lr=0.0001, weight_decay=1e-6)
+    optimizer = bnb.optim.AdamW8bit(filter(lambda p: p.requires_grad, model.parameters()), lr=0.0001, weight_decay=1e-6) if quantize else optim.AdamW(model.parameters(), lr=0.0001, weight_decay=1e-6)
 
     num_iterations = 30000
     iteration = 0
