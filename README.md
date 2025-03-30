@@ -183,8 +183,7 @@ analyze_layer_weights(
 )
 ```
 
-## Acknowledgements
+## References
 
-- ML-SUPERB dataset creators
-- HuggingFace for the transformers library
-- Facebook AI Research for the HuBERT and XLSR models
+1. Jiatong Shi, Dan Berrebbi, et al. Ml-superb: Multilingual speech universal performance benchmark. In INTERSPEECH, 2023.
+2. Jiatong Shi, Shih-Heng Wang, et al. Ml-superb 2.0: Benchmarking multilingual speech models across modeling constraints, languages, and datasets, 2024.
