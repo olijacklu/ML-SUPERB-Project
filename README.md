@@ -16,7 +16,7 @@ This repository contains code for fine-tuning and evaluating pre-trained audio m
 ## Project Structure
 
 ```
-ml-superb-asr/
+ML-SUPERB-Project/
 ├── ml_superb.ipynb          # Main notebook for running experiments
 ├── memory_usage_exp.ipynb   # Notebook for analysis of memory usage using wandb
 ├── README.md
